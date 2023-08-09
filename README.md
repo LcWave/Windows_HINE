@@ -1,25 +1,15 @@
-# OpenHINE
+# Windows_HINE
 
-This is an open-source toolkit for Heterogeneous Information Network Embedding(OpenHINE) with version 0.1. We can train and test the model more easily. It provides implementations of many popular models, including: DHNE, HAN, HeGAN, HERec, HIN2vec, Metapath2vec, MetaGraph2vec, RHINE. More materials can be found in [www.shichuan.org](http://www.shichuan.org).
+This is an open-source toolkit for Heterogeneous Information Network Embedding under Windows (Windows_HINE) with version 0.1. We can train and test the model more easily. It provides implementations of many popular models.
 
-We build a new toolkit [OpenHGNN](https://github.com/BUPT-GAMMA/OpenHGNN), which is a high-level package built on top of DGL. It will have Better Extensibility, Better Encapsulation and More Effiencient. And it includes two embedding models, Metapath2vec and HeRec.
+We reference the [OpenHINE](https://github.com/BUPT-GAMMA/OpenHINE) and the [HNE](https://github.com/yangji9181/HNE).
 
-**convenience provided:**
-
-- ​	easy to train and evaluate
-- ​	able to extend new/your datasets and models
-- ​	the latest model available: HAN、HeGAN and so on	
-
-#### Contributors：
-
-DMGroup from BUPT: Tianyu Zhao, Meiqi Zhu, Nian Liu, Jiawei Liu, Hongrui Liu, Guanyi Chu, Jiayue Liu, Jianan Zhao, Xiao Wang, Cheng Yang, Chuan Shi.
 
 ## Get started
 
 ### Requirements and Installation
 
 - Python version >= 3.6
-
 
 - PyTorch version >= 1.4.0
 
@@ -85,20 +75,23 @@ If you want to train your own dataset, create the file (./dataset/your_dataset_n
 		11	0	p-c	1
 		0	11	c-p	1
 
-PS：The input graph is directed and the undirected needs to be transformed into directed graph.
+PS：The input graph is directed and the undirected needs to be transformed into directed graph. And all types of node should start from 0.
 
-###### Input:	feature	
+###### Input:	label	
 
-​		number_of_nodes embedding_dim
 
-​		node_name dim1 dim2 
+​		node_name node_label
 
 e.g.
 
 ```
-11246	2
-a1814 0.06386946886777878 -0.04781734198331833
-a0 ... ...
+p0	0
+p1	0
+p2	1
+p3	1
+p4	2
+p5	2
+... ...
 ```
 
 
@@ -106,20 +99,6 @@ a0 ... ...
 ## Model
 
 #### Available
-
-##### 	[DHNE AAAI 2018]
-
-​		Structural Deep Embedding for Hyper-Networks 
-
-​		src code:https://github.com/tadpole/DHNE
-
-##### 	[HAN WWW 2019]
-
-​		Heterogeneous Graph Attention Network
-
-​		Add feature.txt into the input folder or set the parameter "featype": "adj", which means that you will use adjacency matrix as your feature.
-
-​		src code:https://github.com/Jhy1993/HAN
 
 ##### [HeGAN KDD 2019]
 
@@ -157,20 +136,6 @@ a0 ... ...
 
 ​		src code:https://github.com/daokunzhang/MetaGraph2Vec
 
-##### [PTE KDD 2015]
-
-​		PTE: Predictive Text Embedding through Large-scale Heterogeneous Text Networks
-
-​		src code:https://github.com/mnqu/PTE
-
-##### 	[RHINE AAAI 2019]
-
-​		Relation Structure-Aware Heterogeneous Information Network Embedding 
-
-​		only supported in the Linux
-
-​		src code:https://github.com/rootlu/RHINE 
-
 ## Output
 
 #### Test
@@ -200,36 +165,3 @@ e.g.
 a1814 0.06386946886777878 -0.04781734198331833
 a0 ... ...
 ```
-
-
-
-## Evaluation/Task
-
-| ACM dataset       | Micro-F1 | Macro-F1 | NMI    |
-| ----------------- | -------- | -------- | ------ |
-| DHNE              | 0.7201   | 0.7007   | 0.3280 |
-| HAN               | 0.8401   | 0.8362   | 0.4241 |
-| HeGAN             | 0.8308   | 0.8276   | 0.4335 |
-| HERec             | 0.8308   | 0.8304   | 0.3618 |
-| HIN2vec           | 0.8458   | 0.8449   | 0.4148 |
-| Metapath2vec(PAP) | 0.7823   | 0.7725   | 0.2828 |
-| MetaGraph2vec     | 0.8085   | 0.8019   | 0.5095 |
-| PTE               | 0.7624   | 0.7543   | 0.3781 |
-| RHINE             | 0.7699   | 0.7571   | 0.3970 |
-
-| DBLP dataset        | Micro-F1 | Macro-F1 | NMI    |
-| ------------------- | -------- | -------- | ------ |
-| DHNE                | ---      | ---      | ---    |
-| HAN                 | 0.8325   | 0.8141   | 0.3415 |
-| HeGAN               | 0.9414   | 0.9364   | 0.7898 |
-| HERec               | 0.9249   | 0.9214   | 0.3412 |
-| HIN2vec             | 0.9495   | 0.9460   | 0.3924 |
-| Metapath2vec(APCPA) | 0.9483   | 0.9448   | 0.7786 |
-| MetaGraph2vec       | 0.9138   | 0.9093   | 0.6136 |
-| PTE                 | 0.9335   | 0.9301   | 0.3280 |
-| RHINE               | 0.9360   | 0.9316   | 0.7356 |
-
-HAN uses the dataset without features.
-
-## Future work
-We will use the [dgl](https://github.com/dmlc/dgl) as our backend. And the OpenHINE will not be updated. We will be dedicated in building the new toolkit OpenHGNN, which is a high-level package built on top of DGL. It will have Better Extensibility, Better Encapsulation and More Effiencient.
