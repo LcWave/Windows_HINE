@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "test.py", line 174, in <module>
+    NMI, ARI = _evaluation.evaluate_cluster(embedding_list)
+  File "test.py", line 58, in evaluate_cluster
+    X.append(embedding_list[p])
+KeyError: 'p0'
